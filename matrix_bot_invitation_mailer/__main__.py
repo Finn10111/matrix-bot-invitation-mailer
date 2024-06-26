@@ -107,7 +107,7 @@ The link will be valid for 7 days.""".format(os.getenv("REGISTRATION_URL") + res
         print(f"Error: {e}")
     finally:
         # Close the connection
-        server.quit()    
+        server.quit()
 
 
 bot.run()
