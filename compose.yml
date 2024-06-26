@@ -1,0 +1,17 @@
+---
+services:
+  matrix-bot-invitation-mailer:
+    build:
+      context: .
+    image: code.f2n.me/finn/matrix-bot-invitation-mailer:latest
+    environment:
+      - BOT_HOMESERVER
+      - BOT_USERNAME
+      - BOT_PASSWORD
+      - REGISTRATION_API_URL
+      - REGISTRATION_API_SHARED_SECRET
+      - REGISTRATION_URL
+      - SMTP_HOSTNAME
+      - SMTP_USERNAME
+      - SMTP_PASSWORD
+      - MAIL_FROM_ADDRESS
