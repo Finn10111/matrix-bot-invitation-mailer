@@ -36,3 +36,18 @@ jobs:
       - name: Inspect
         run: |
           docker buildx imagetools inspect code.f2n.me/finn/matrix-bot-invitation-mailer:latest
+      - name: Deploy
+        uses: tristiisch/docker-stack-deployment@v2
+        with:
+          remote_docker_host: home.finnchristiansen.de
+          remote_docker_port: 44022
+          remote_docker_username: deploy
+          ssh_private_key: ${{ secrets.DOCKER_RPI4_SSH_PRIVATE_KEY }}
+          ssh_public_key: ${{ secrets.DOCKER_RPI4_SSH_PUBLIC_KEY }}
+          deployment_mode: docker-compose
+          copy_stack_file: false
+          deploy_path: /opt/stacks/matrix-bot-invitation-mailer
+          stack_file_path: ./compose.yaml
+          keep_files: 5
+          docker_remove_orphans: true
+          args: ""
