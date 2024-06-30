@@ -47,7 +47,7 @@ jobs:
           deployment_mode: docker-compose
           copy_stack_file: false
           deploy_path: /opt/stacks/matrix-bot-invitation-mailer
-          stack_file_path: ./compose.yaml
+          stack_file_path: ./compose.yml
           keep_files: 5
           docker_remove_orphans: true
           args: ""
