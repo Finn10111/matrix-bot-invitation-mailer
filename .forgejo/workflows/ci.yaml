@@ -37,7 +37,7 @@ jobs:
         run: |
           docker buildx imagetools inspect code.f2n.me/finn/matrix-bot-invitation-mailer:latest
       - name: Deploy
-        uses: tristiisch/docker-stack-deployment@v2
+        uses: https://github.com/tristiisch/docker-stack-deployment@v2
         with:
           remote_docker_host: home.finnchristiansen.de
           remote_docker_port: 44022
