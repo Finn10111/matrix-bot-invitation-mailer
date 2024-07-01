@@ -37,15 +37,14 @@ jobs:
         run: |
           docker buildx imagetools inspect code.f2n.me/finn/matrix-bot-invitation-mailer:latest
 
-      - name: Deploy
-        uses: https://github.com/keatonLiu/docker-compose-remote-action@master
+      - name: Do Docker Compose Pull via SSH
+        uses: https://github.com/appleboy/ssh-action@v1.0.3
         with:
-          ssh_host: home.finnchristiansen.de
-          ssh_port: 44022
-          ssh_user: deploy
-          ssh_private_key: ${{ secrets.DOCKER_RPI4_SSH_PRIVATE_KEY }}
-          ssh_host_public_key: ${{ secrets.DOCKER_RPI4_SSH_PUBLIC_KEY }}
-          workspace: /opt/stacks/matrix-bot-invitation-mailer
-          docker_compose_filename: compose.yml
-          workspace_keep: true
-          docker_args: -d --remove-orphans
+          key: ${{ secrets.DOCKER_RPI4_SSH_PRIVATE_KEY }}
+          fingerprint: ${{ secrets.DOCKER_RPI4_SSH_PUBLIC_KEY }}
+          host: home.finnchristiansen.de
+          username: dploy
+          port: 44022
+          script: |
+            cd /opt/stacks/matrix-bot-invitation-mailer
+            docker compose pull && docker compose up -d --force-recreate
