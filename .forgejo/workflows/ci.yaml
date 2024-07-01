@@ -47,3 +47,5 @@ jobs:
           ssh_host_public_key: ${{ secrets.DOCKER_RPI4_SSH_PUBLIC_KEY }}
           workspace: /opt/stacks/matrix-bot-invitation-mailer
           docker_compose_filename: compose.yml
+          workspace_keep: true
+          docker_args: -d --remove-orphans
