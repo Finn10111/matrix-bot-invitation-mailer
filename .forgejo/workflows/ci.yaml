@@ -38,7 +38,7 @@ jobs:
           docker buildx imagetools inspect code.f2n.me/finn/matrix-bot-invitation-mailer:latest
 
       - name: Deploy
-        uses: https://github.com/tristiisch/astappiev/docker-compose-remote-action@master
+        uses: https://github.com/astappiev/docker-compose-remote-action@v1.2
         with:
           ssh_host: home.finnchristiansen.de
           ssh_port: 44022
