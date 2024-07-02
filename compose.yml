@@ -4,6 +4,7 @@ services:
     build:
       context: .
     image: code.f2n.me/finn/matrix-bot-invitation-mailer:latest
+    restart: unless-stopped
     environment:
       - BOT_HOMESERVER
       - BOT_USERNAME

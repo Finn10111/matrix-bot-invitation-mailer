@@ -41,10 +41,10 @@ jobs:
         uses: https://github.com/appleboy/ssh-action@v1.0.3
         with:
           key: ${{ secrets.DOCKER_RPI4_SSH_PRIVATE_KEY }}
-          fingerprint: ${{ secrets.DOCKER_RPI4_SSH_PUBLIC_KEY }}
-          host: home.finnchristiansen.de
-          username: dploy
-          port: 44022
+          fingerprint: ${{ secrets.DOCKER_RPI4_SSH_FINGERPRINT }}
+          host: ${{ secrets.DOCKER_RPI4_SSH_HOSTNAME }}
+          username: ${{ secrets.DOCKER_RPI4_SSH_USERNAME }}
+          port: ${{ secrets.DOCKER_RPI4_SSH_PORT }}
           script: |
             cd /opt/stacks/matrix-bot-invitation-mailer
             docker compose pull && docker compose up -d --force-recreate
