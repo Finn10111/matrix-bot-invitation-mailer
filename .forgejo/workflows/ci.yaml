@@ -41,7 +41,6 @@ jobs:
         uses: https://github.com/appleboy/ssh-action@v1.0.3
         with:
           key: ${{ secrets.DOCKER_RPI4_SSH_PRIVATE_KEY }}
-          fingerprint: ${{ secrets.DOCKER_RPI4_SSH_FINGERPRINT }}
           host: ${{ secrets.DOCKER_RPI4_SSH_HOSTNAME }}
           username: ${{ secrets.DOCKER_RPI4_SSH_USERNAME }}
           port: ${{ secrets.DOCKER_RPI4_SSH_PORT }}
