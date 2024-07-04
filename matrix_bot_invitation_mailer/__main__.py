@@ -1,9 +1,12 @@
 import simplematrixbotlib as botlib
 import requests
 import os
+import sys
 import logging
 import smtplib
 import datetime
+import time
+from aiohttp.client_exceptions import ServerDisconnectedError
 from email.mime.text import MIMEText
 from dotenv import load_dotenv
 
@@ -110,4 +113,12 @@ The link will be valid for 7 days.""".format(os.getenv("REGISTRATION_URL") + res
         server.quit()
 
 
-bot.run()
+while True:
+    try:
+        bot.run()
+    except ServerDisconnectedError:
+        time.sleep(5)
+        print("connection lost, reconnecting in 5 seconds...")
+    except KeyboardInterrupt:
+        print("exiting...")
+        sys.exit(0)
