@@ -9,7 +9,7 @@ The bot calls the Api and sends the invitation link via e-mail to a given receip
 Use container image or run this after cloning: 
 
 ```
-. bin/active
+. bin/activate
 python -m matrix_bot_invitation_mailer
 ```
 
