@@ -99,6 +99,7 @@ The link will be valid for 7 days.""".format(os.getenv("REGISTRATION_URL") + res
     try:
         # Connect to the SMTP server
         server = smtplib.SMTP(os.getenv("SMTP_HOSTNAME"), os.getenv("SMTP_PORT"))
+        server.ehlo()
         server.starttls()  # Secure the connection
         server.login(os.getenv("SMTP_USERNAME"), os.getenv("SMTP_PASSWORD"))  # Login to the server
 
