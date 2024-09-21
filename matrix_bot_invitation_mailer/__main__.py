@@ -105,9 +105,9 @@ The link will be valid for 7 days.""".format(os.getenv("REGISTRATION_URL") + res
         # Send the email
         server.sendmail(sender_email, receiver_email, msg.as_string())
 
-        print("Email sent successfully")
+        logging.info("Email sent successfully")
     except Exception as e:
-        print(f"Error: {e}")
+        logging.error("Error sending mail: {}".format(e))
     finally:
         # Close the connection
         server.quit()
@@ -118,7 +118,7 @@ while True:
         bot.run()
     except ServerDisconnectedError:
         time.sleep(5)
-        print("connection lost, reconnecting in 5 seconds...")
+        logging.info("connection lost, reconnecting in 5 seconds...")
     except KeyboardInterrupt:
-        print("exiting...")
+        logging.info("exiting...")
         sys.exit(0)
