@@ -15,4 +15,5 @@ services:
       - SMTP_HOSTNAME
       - SMTP_USERNAME
       - SMTP_PASSWORD
+      - SMTP_PORT
       - MAIL_FROM_ADDRESS
