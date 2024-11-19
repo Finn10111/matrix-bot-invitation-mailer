@@ -117,9 +117,9 @@ The link will be valid for 7 days.""".format(os.getenv("REGISTRATION_URL") + res
 while True:
     try:
         bot.run()
-    except ServerDisconnectedError:
-        time.sleep(5)
+    except (ServerDisconnectedError, ValueError):
         logging.info("connection lost, reconnecting in 5 seconds...")
+        time.sleep(5)
     except KeyboardInterrupt:
         logging.info("exiting...")
         sys.exit(0)
