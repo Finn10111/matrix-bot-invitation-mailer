@@ -9,6 +9,7 @@ import time
 from aiohttp.client_exceptions import ServerDisconnectedError
 from email.mime.text import MIMEText
 from dotenv import load_dotenv
+from asyncio import TimeoutError
 
 
 load_dotenv()
@@ -117,7 +118,7 @@ The link will be valid for 7 days.""".format(os.getenv("REGISTRATION_URL") + res
 while True:
     try:
         bot.run()
-    except (ServerDisconnectedError, ValueError):
+    except (ServerDisconnectedError, ValueError, TimeoutError):
         logging.info("connection lost, reconnecting in 5 seconds...")
         time.sleep(5)
     except KeyboardInterrupt:
